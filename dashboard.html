@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de bord</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Intégration de Chart.js -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f3f3f3;
+            color: #333;
+        }
+        .navbar {
+            background-color: #e50914;
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .navbar button {
+            background-color: #fff;
+            color: #e50914;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .navbar button:hover {
+            background-color: #f1f1f1;
+        }
+        .dashboard-container {
+            padding: 20px;
+        }
+        .dashboard-header {
+            margin-bottom: 20px;
+        }
+        .dashboard-header h2 {
+            margin: 0;
+        }
+        .widgets {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .widget {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 250px;
+            padding: 20px;
+            text-align: center;
+        }
+        .widget h3 {
+            margin: 0 0 10px;
+            font-size: 18px;
+        }
+        .widget p {
+            font-size: 14px;
+            color: #666;
+        }
+        .chart-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        canvas {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .section-buttons {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .section-buttons button {
+            background-color: #e50914;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .section-buttons button:hover {
+            background-color: #d40813;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Tableau de Bord</h1>
+        <button onclick="logout()">Se déconnecter</button>
+    </div>
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h2>Bienvenue, Utilisateur !</h2>
+            <p>Gérez vos informations, consultez vos statistiques et explorez vos paramètres.</p>
+        </div>
+        <div class="widgets">
+            <div class="widget">
+                <h3>Profil</h3>
+                <p>Email : wadewronskienpie@icloud.com</p>
+                <button onclick="goTo('profile.html')">Voir et Modifier</button>
+            </div>
+            <div class="widget">
+                <h3>Paramètres</h3>
+                <p>Notifications activées : Oui</p>
+                <button onclick="goTo('settings.html')">Gérer les paramètres</button>
+            </div>
+            <div class="widget">
+                <h3>Statistiques</h3>
+                <p>20 tâches complétées</p>
+            </div>
+        </div>
+        <div class="chart-container">
+            <h3>Progression des tâches</h3>
+            <canvas id="taskChart"></canvas>
+        </div>
+    </div>
+    <script>
+        // Déconnexion
+        function logout() {
+            alert('Vous êtes déconnecté !');
+            window.location.href = 'login.html'; // Redirige vers la page de connexion
+        }
+
+        // Redirection vers une autre page
+        function goTo(page) {
+            window.location.href = page; // Redirige vers la page spécifiée
+        }
+
+        // Graphique des tâches avec Chart.js
+        const ctx = document.getElementById('taskChart').getContext('2d');
+        const taskChart = new Chart(ctx, {
+            type: 'line', // Type de graphique (line, bar, etc.)
+            data: {
+                labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin'], // Mois
+                datasets: [{
+                    label: 'Tâches complétées',
+                    data: [3, 7, 10, 15, 20, 25], // Exemple de données
+                    borderColor: '#e50914',
+                    backgroundColor: 'rgba(229, 9, 20, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.4, // Arrondi des lignes
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                        labels: {
+                            color: '#333'
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: { color: '#666' },
+                        grid: { display: false }
+                    },
+                    y: {
+                        ticks: { color: '#666' },
+                        grid: { color: '#ddd' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paramètres</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f3f3f3;
+            color: #333;
+        }
+        .navbar {
+            background-color: #e50914;
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .navbar button {
+            background-color: #fff;
+            color: #e50914;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .navbar button:hover {
+            background-color: #f1f1f1;
+        }
+        .settings-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .settings-section {
+            margin-bottom: 20px;
+        }
+        .settings-section h3 {
+            color: #e50914;
+            margin-bottom: 10px;
+        }
+        .settings-section label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .settings-section input[type="text"], 
+        .settings-section input[type="email"], 
+        .settings-section input[type="password"],
+        .settings-section select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .settings-section input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .settings-actions {
+            text-align: center;
+        }
+        .settings-actions button {
+            background-color: #e50914;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .settings-actions button:hover {
+            background-color: #d40813;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Paramètres</h1>
+        <button onclick="goBack()">Retour</button>
+    </div>
+    <div class="settings-container">
+        <div class="settings-section">
+            <h3>Modifier les informations du compte</h3>
+            <label for="email">Email :</label>
+            <input type="email" id="email" value="wadewronskienpie@icloud.com">
+            
+            <label for="password">Nouveau mot de passe :</label>
+            <input type="password" id="password" placeholder="Entrez un nouveau mot de passe">
+        </div>
+        <div class="settings-section">
+            <h3>Notifications</h3>
+            <label><input type="checkbox" id="emailNotif" checked> Recevoir des notifications par email</label>
+            <label><input type="checkbox" id="smsNotif"> Recevoir des notifications par SMS</label>
+        </div>
+        <div class="settings-section">
+            <h3>Préférences</h3>
+            <label for="language">Langue :</label>
+            <select id="language">
+                <option value="fr" selected>Français</option>
+                <option value="en">Anglais</option>
+                <option value="es">Espagnol</option>
+            </select>
+        </div>
+        <div class="settings-actions">
+            <button onclick="saveSettings()">Enregistrer</button>
+            <button onclick="resetSettings()">Réinitialiser</button>
+        </div>
+    </div>
+    <script>
+        function goBack() {
+            window.location.href = 'dashboard.html'; // Redirige vers le tableau de bord
+        }
+
+        function saveSettings() {
+            alert('Vos paramètres ont été enregistrés !');
+            // Simuler une sauvegarde ou appeler une API pour enregistrer les modifications
+        }
+
+        function resetSettings() {
+            const resetConfirm = confirm('Voulez-vous vraiment réinitialiser vos paramètres ?');
+            if (resetConfirm) {
+                document.getElementById('email').value = 'user@example.com';
+                document.getElementById('password').value = '';
+                document.getElementById('emailNotif').checked = true;
+                document.getElementById('smsNotif').checked = false;
+                document.getElementById('language').value = 'fr';
+                alert('Les paramètres ont été réinitialisés.');
+            }
+        }
+    </script>
+</body>
+</html>
