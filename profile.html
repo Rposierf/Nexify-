@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil Utilisateur</title>
+    <title>Nexify Utilisateur</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -101,8 +101,8 @@
     <div class="profile-container">
         <div class="profile-header">
             <img src="/Users/wadewronskienpierre/Desktop/HTML/cristiano-ronaldo.jpg.webp" alt="Photo de profil">
-            <h2>Pierre Wade Wronskien</h2>
-            <p>wadewronskienpie@icloud.com</p>
+            <h2>nom_utilisateur</h2>
+            <p>email_utilisateur@gmail.com</p>
         </div>
         <div class="profile-section">
             <h3>Modifier vos informations</h3>
@@ -124,17 +124,17 @@
     </div>
     <script>
         function goBack() {
-            window.location.href = 'dashboard.html'; // Redirige vers le tableau de bord
+            window.location.href = 'dashboard.html';
         }
 
         function saveProfile() {
             alert('Vos modifications ont été enregistrées !');
-            // Simuler une sauvegarde ou appeler une API pour enregistrer les modifications
+            window.location.href = 'dashboard.html';
         }
 
         function logout() {
             alert('Vous êtes déconnecté !');
-            window.location.href = 'login.html'; // Redirige vers la page de connexion
+            window.location.href = 'login.html';
         }
     </script>
 </body>
