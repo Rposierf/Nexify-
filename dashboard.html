@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tableau de bord</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Intégration de Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -130,30 +130,27 @@
         </div>
     </div>
     <script>
-        // Déconnexion
         function logout() {
             alert('Vous êtes déconnecté !');
-            window.location.href = 'login.html'; // Redirige vers la page de connexion
+            window.location.href = 'login.html'; 
         }
 
-        // Redirection vers une autre page
         function goTo(page) {
-            window.location.href = page; // Redirige vers la page spécifiée
+            window.location.href = page; 
         }
 
-        // Graphique des tâches avec Chart.js
         const ctx = document.getElementById('taskChart').getContext('2d');
         const taskChart = new Chart(ctx, {
-            type: 'line', // Type de graphique (line, bar, etc.)
+            type: 'line', 
             data: {
-                labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin'], // Mois
+                labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin'], 
                 datasets: [{
                     label: 'Tâches complétées',
-                    data: [3, 7, 10, 15, 20, 25], // Exemple de données
+                    data: [3, 7, 10, 15, 20, 25], 
                     borderColor: '#e50914',
                     backgroundColor: 'rgba(229, 9, 20, 0.1)',
                     borderWidth: 2,
-                    tension: 0.4, // Arrondi des lignes
+                    tension: 0.4, 
                 }]
             },
             options: {
