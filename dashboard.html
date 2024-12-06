@@ -79,21 +79,46 @@
             max-width: 600px;
             margin: 0 auto;
         }
-        .section-buttons {
-            margin-top: 30px;
+        .messages-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .messages-container h3 {
+            margin-bottom: 15px;
+            color: #e50914;
+        }
+        .message {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+        .message:last-child {
+            border-bottom: none;
+        }
+        .message p {
+            margin: 0;
+            color: #333;
+        }
+        .message span {
+            color: #666;
+            font-size: 12px;
+        }
+        .messages-actions {
+            margin-top: 10px;
             text-align: center;
         }
-        .section-buttons button {
+        .messages-actions button {
             background-color: #e50914;
             color: #fff;
             border: none;
             padding: 10px 20px;
-            margin: 0 10px;
             border-radius: 4px;
             font-size: 14px;
             cursor: pointer;
         }
-        .section-buttons button:hover {
+        .messages-actions button:hover {
             background-color: #d40813;
         }
     </style>
@@ -106,12 +131,12 @@
     <div class="dashboard-container">
         <div class="dashboard-header">
             <h2>Bienvenue, Utilisateur !</h2>
-            <p>Gérez vos informations, consultez vos statistiques et explorez vos paramètres.</p>
+            <p>Gérez vos informations, consultez vos statistiques, messages et explorez vos paramètres.</p>
         </div>
         <div class="widgets">
             <div class="widget">
                 <h3>Profil</h3>
-                <p>Email : wadewronskienpie@icloud.com</p>
+                <p>Email : utilisateur@example.com</p>
                 <button onclick="goTo('profile.html')">Voir et Modifier</button>
             </div>
             <div class="widget">
@@ -128,6 +153,24 @@
             <h3>Progression des tâches</h3>
             <canvas id="taskChart"></canvas>
         </div>
+        <div class="messages-container">
+            <h3>Messages Récents</h3>
+            <div class="message">
+                <p><strong>Message 1 :</strong> Rendez-vous confirmé.</p>
+                <span>Reçu le : 21/11/2024</span>
+            </div>
+            <div class="message">
+                <p><strong>Message 2 :</strong> Votre abonnement est actif.</p>
+                <span>Reçu le : 20/11/2024</span>
+            </div>
+            <div class="message">
+                <p><strong>Message 3 :</strong> Mise à jour de votre profil réussie.</p>
+                <span>Reçu le : 19/11/2024</span>
+            </div>
+            <div class="messages-actions">
+                <button onclick="goTo('messages.html')">Voir Tous les Messages</button>
+            </div>
+        </div>
     </div>
     <script>
         function logout() {
@@ -135,22 +178,23 @@
             window.location.href = 'login.html'; 
         }
 
+        
         function goTo(page) {
-            window.location.href = page; 
+            window.location.href = page;
         }
 
         const ctx = document.getElementById('taskChart').getContext('2d');
         const taskChart = new Chart(ctx, {
-            type: 'line', 
+            type: 'line',
             data: {
-                labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin'], 
+                labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin'],
                 datasets: [{
                     label: 'Tâches complétées',
-                    data: [3, 7, 10, 15, 20, 25], 
+                    data: [3, 7, 10, 15, 20, 25],
                     borderColor: '#e50914',
                     backgroundColor: 'rgba(229, 9, 20, 0.1)',
                     borderWidth: 2,
-                    tension: 0.4, 
+                    tension: 0.4,
                 }]
             },
             options: {
