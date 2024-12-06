@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f3f3f3;
+            color: #333;
+        }
+        .navbar {
+            background-color: #e50914;
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .navbar button {
+            background-color: #fff;
+            color: #e50914;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .navbar button:hover {
+            background-color: #f1f1f1;
+        }
+        .messages-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .message-item {
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+        }
+        .message-item:last-child {
+            border-bottom: none;
+        }
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .message-header h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #e50914;
+        }
+        .message-header span {
+            font-size: 12px;
+            color: #666;
+        }
+        .message-body {
+            margin: 10px 0;
+            font-size: 14px;
+            color: #333;
+        }
+        .message-actions {
+            text-align: right;
+        }
+        .message-actions button {
+            background-color: #e50914;
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            margin-left: 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .message-actions button:hover {
+            background-color: #d40813;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Messages</h1>
+        <button onclick="goBack()">Retour</button>
+    </div>
+    <div class="messages-container">
+        <div class="message-item">
+            <div class="message-header">
+                <h3>Message 1 : Rendez-vous confirmé</h3>
+                <span>Reçu le : 21/11/2024</span>
+            </div>
+            <div class="message-body">
+                Votre rendez-vous est confirmé pour le 25 novembre 2024 à 14h.
+            </div>
+            <div class="message-actions">
+                <button onclick="replyMessage(1)">Répondre</button>
+                <button onclick="markAsRead(1)">Marquer comme lu</button>
+                <button onclick="deleteMessage(1)">Supprimer</button>
+            </div>
+        </div>
+        <div class="message-item">
+            <div class="message-header">
+                <h3>Message 2 : Votre abonnement est actif</h3>
+                <span>Reçu le : 20/11/2024</span>
+            </div>
+            <div class="message-body">
+                Félicitations ! Votre abonnement Premium a été activé avec succès.
+            </div>
+            <div class="message-actions">
+                <button onclick="replyMessage(2)">Répondre</button>
+                <button onclick="markAsRead(2)">Marquer comme lu</button>
+                <button onclick="deleteMessage(2)">Supprimer</button>
+            </div>
+        </div>
+        <div class="message-item">
+            <div class="message-header">
+                <h3>Message 3 : Mise à jour réussie</h3>
+                <span>Reçu le : 19/11/2024</span>
+            </div>
+            <div class="message-body">
+                Vos informations personnelles ont été mises à jour avec succès.
+            </div>
+            <div class="message-actions">
+                <button onclick="replyMessage(3)">Répondre</button>
+                <button onclick="markAsRead(3)">Marquer comme lu</button>
+                <button onclick="deleteMessage(3)">Supprimer</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function goBack() {
+            window.location.href = 'dashboard.html'; // Redirige vers le tableau de bord
+        }
+
+        function replyMessage(id) {
+            alert(`Répondre au message ${id}`);
+            // Vous pouvez ouvrir un formulaire ou rediriger vers une page de réponse
+        }
+
+        function markAsRead(id) {
+            alert(`Message ${id} marqué comme lu.`);
+            // Vous pouvez mettre à jour l'état du message avec une API ou une simulation
+        }
+
+        function deleteMessage(id) {
+            const confirmDelete = confirm(`Voulez-vous vraiment supprimer le message ${id} ?`);
+            if (confirmDelete) {
+                alert(`Message ${id} supprimé.`);
+                // Vous pouvez simuler la suppression ou appeler une API
+            }
+        }
+    </script>
+</body>
+</html>
